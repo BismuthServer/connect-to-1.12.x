@@ -1,0 +1,19 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "net.earthcomputer.connect_to_1_12_x.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"client": [
+		"AddServerScreenMixin",
+		"DirectConnectScreenMixin",
+		"DownloadingTerrainScreenMixin",
+		"HandshakeC2SPacketMixin",
+		"NetworkProtocolMixin",
+		"RecipeBookGuiMixin",
+		"ServerListEntryMixin",
+		"ServerListEntryWidgetMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

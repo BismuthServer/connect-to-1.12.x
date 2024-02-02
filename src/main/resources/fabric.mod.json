@@ -1,30 +1,26 @@
 {
 	"schemaVersion": 1,
-	"id": "example_mod",
+	"id": "connect_to_1_12_x",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Connect to 1.12.x",
+	"description": "Enables you to connect to any 1.12.x version from a 1.12.2 Minecraft client ",
 	"authors": [
-		"Me!"
+		"Earthcomputer",
+		"Space Walker"
 	],
 	"contact": {
-		"homepage": "https://example.com/",
-		"sources": "https://github.com/OrnitheMC/ornithe-template-mod"
+		"homepage": "https://modrinth.com/mod/connect-to-1.12.x",
+		"sources": "https://github.com/SpaceWalkerRS/connect-to-1.12.x"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/example_mod/icon.png",
-	"environment": "*",
+	"license": "MIT",
+	"environment": "client",
 	"entrypoints": {
-		"init": [
-			"com.example.example_mod.ExampleMod"
-		]
 	},
 	"mixins": [
-		"example_mod.mixins.json"
+		"connect-to-1.12.x.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.14.21",
-		"minecraft": "1.7.2",
-		"osl-entrypoints": ">=0.4.0"
+		"minecraft": "1.12.2"
 	}
 }
