@@ -42,7 +42,7 @@ public class DirectConnectScreenMixin extends Screen {
     }
 
     private void refreshProtocolButton() {
-        switch (((ServerListEntryAccessor) server).getProtocolVersion()) {
+        switch (((ServerListEntryAccessor) server).connect_to_1_12_x$getProtocolVersion()) {
             case PacketLists.PROTOCOL_1_12:
                 versionButton.message = "1.12";
                 break;
@@ -65,7 +65,7 @@ public class DirectConnectScreenMixin extends Screen {
     )
     private void buttonClicked(ButtonWidget button, CallbackInfo ci) {
         if (button.active && button.id == -1) {
-            int protocolVersion = ((ServerListEntryAccessor) server).getProtocolVersion();
+            int protocolVersion = ((ServerListEntryAccessor) server).connect_to_1_12_x$getProtocolVersion();
             switch (protocolVersion) {
                 case PacketLists.PROTOCOL_1_12:
                     protocolVersion = PacketLists.PROTOCOL_1_12_1;
@@ -78,7 +78,7 @@ public class DirectConnectScreenMixin extends Screen {
                     protocolVersion = PacketLists.PROTOCOL_1_12;
                     break;
             }
-            ((ServerListEntryAccessor) server).setProtocolVersion(protocolVersion);
+            ((ServerListEntryAccessor) server).connect_to_1_12_x$setProtocolVersion(protocolVersion);
             refreshProtocolButton();
         }
     }

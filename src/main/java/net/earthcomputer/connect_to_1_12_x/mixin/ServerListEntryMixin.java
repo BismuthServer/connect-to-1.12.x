@@ -29,9 +29,9 @@ public class ServerListEntryMixin implements ServerListEntryAccessor {
     )
     private static void onReadServerEntry(NbtCompound nbt, CallbackInfoReturnable<ServerListEntry> ci, ServerListEntry entry) {
         if (nbt.contains("ProtocolVersion", 99))
-            ((ServerListEntryAccessor) entry).setProtocolVersion(nbt.getInt("ProtocolVersion"));
+            ((ServerListEntryAccessor) entry).connect_to_1_12_x$setProtocolVersion(nbt.getInt("ProtocolVersion"));
         else
-            ((ServerListEntryAccessor) entry).setProtocolVersion(PacketLists.PROTOCOL_1_12_2);
+            ((ServerListEntryAccessor) entry).connect_to_1_12_x$setProtocolVersion(PacketLists.PROTOCOL_1_12_2);
     }
 
     @Inject(
@@ -52,16 +52,16 @@ public class ServerListEntryMixin implements ServerListEntryAccessor {
     	)
     )
     private void onSet(ServerListEntry other, CallbackInfo ci) {
-        this.protocolVersion = ((ServerListEntryAccessor) other).getProtocolVersion();
+        this.protocolVersion = ((ServerListEntryAccessor) other).connect_to_1_12_x$getProtocolVersion();
     }
 
     @Override
-    public int getProtocolVersion() {
+    public int connect_to_1_12_x$getProtocolVersion() {
         return protocolVersion;
     }
 
     @Override
-    public void setProtocolVersion(int protocolVersion) {
+    public void connect_to_1_12_x$setProtocolVersion(int protocolVersion) {
         this.protocolVersion = protocolVersion;
     }
 }

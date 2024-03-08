@@ -8,10 +8,14 @@ import net.earthcomputer.connect_to_1_12_x.PacketLists;
 
 import net.minecraft.client.gui.screen.DownloadingTerrainScreen;
 import net.minecraft.client.gui.screen.Screen;
+import org.spongepowered.asm.mixin.Unique;
+
+import java.util.Objects;
 
 @Mixin(DownloadingTerrainScreen.class)
 public class DownloadingTerrainScreenMixin extends Screen {
 
+	@Unique
 	private int progress;
 
 	@Override
@@ -20,7 +24,7 @@ public class DownloadingTerrainScreenMixin extends Screen {
 			++this.progress;
 
 			if (this.progress % 20 == 0) {
-				this.minecraft.getNetworkHandler().sendPacket(new KeepAliveC2SPacket1121());
+				Objects.requireNonNull(this.minecraft.getNetworkHandler()).sendPacket(new KeepAliveC2SPacket1121());
 			}
 		}
 	}

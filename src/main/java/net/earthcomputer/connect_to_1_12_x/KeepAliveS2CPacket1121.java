@@ -1,6 +1,7 @@
 package net.earthcomputer.connect_to_1_12_x;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.handler.ClientPlayPacketHandler;
@@ -23,6 +24,6 @@ public class KeepAliveS2CPacket1121 implements Packet<ClientPlayPacketHandler> {
 
 	@Override
 	public void handle(ClientPlayPacketHandler handler) {
-		Minecraft.getInstance().getNetworkHandler().sendPacket(new KeepAliveC2SPacket1121(id));
+		Objects.requireNonNull(Minecraft.getInstance().getNetworkHandler()).sendPacket(new KeepAliveC2SPacket1121(id));
 	}
 }

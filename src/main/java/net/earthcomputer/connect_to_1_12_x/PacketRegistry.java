@@ -5,8 +5,8 @@ import net.minecraft.network.packet.Packet;
 
 public interface PacketRegistry {
 
-	void registerPacket(PacketFlow flow, Class<? extends Packet<?>> type);
+	void connect_to_1_12_x$registerPacket(PacketFlow flow, Class<? extends Packet<?>> type);
 
-	void clear();
+	void connect_to_1_12_x$clear();
 
 }

@@ -2,8 +2,8 @@ package net.earthcomputer.connect_to_1_12_x;
 
 public interface ServerListEntryAccessor {
 
-    int getProtocolVersion();
+    int connect_to_1_12_x$getProtocolVersion();
 
-    void setProtocolVersion(int version);
+    void connect_to_1_12_x$setProtocolVersion(int version);
 
 }

@@ -6,7 +6,8 @@
 	"description": "Enables you to connect to any 1.12.x version from a 1.12.2 Minecraft client ",
 	"authors": [
 		"Earthcomputer",
-		"Space Walker"
+		"Space Walker",
+    "dragonbabyfly"
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/mod/connect-to-1.12.x",

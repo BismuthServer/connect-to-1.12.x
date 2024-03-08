@@ -17,27 +17,25 @@ import net.minecraft.network.packet.Packet;
 @Mixin(NetworkProtocol.class)
 public class NetworkProtocolMixin implements PacketRegistry {
 
-	@Shadow
-	@Final
+	@Shadow @Final
 	private Map<PacketFlow, BiMap<Integer, Class<? extends Packet<?>>>> packets;
 
-	@Shadow
-	@Final
+	@Shadow @Final
 	private static Map<Class<? extends Packet<?>>, NetworkProtocol> BY_PACKET;
 
 	@Shadow
-	private NetworkProtocol register(PacketFlow flow, Class<? extends Packet<?>> type) {
+	protected NetworkProtocol register(PacketFlow flow, Class<? extends Packet<?>> type) {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public void registerPacket(PacketFlow flow, Class<? extends Packet<?>> type) {
+	public void connect_to_1_12_x$registerPacket(PacketFlow flow, Class<? extends Packet<?>> type) {
 		register(flow, type);
 		BY_PACKET.put(type, (NetworkProtocol) (Object) this);
 	}
 
 	@Override
-	public void clear() {
+	public void connect_to_1_12_x$clear() {
 		for (BiMap<Integer, Class<? extends Packet<?>>> types : packets.values()) {
 			for (Class<? extends Packet<?>> type : types.values()) {
 				BY_PACKET.remove(type);

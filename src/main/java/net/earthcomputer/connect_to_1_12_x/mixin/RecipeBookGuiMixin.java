@@ -2,6 +2,7 @@ package net.earthcomputer.connect_to_1_12_x.mixin;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -47,8 +48,8 @@ import net.minecraft.item.StackedContents;
 
 @Mixin(RecipeBookGui.class)
 public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
-
-    private static final Logger LOGGER = LogManager.getLogger();
+    @Unique
+	private static final Logger LOGGER = LogManager.getLogger();
 
     @Unique
     private InventoryMenu menu;
@@ -74,11 +75,11 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
     private StackedContents contents = new StackedContents();
 
     @Shadow
-    private void setGhostRecipe(Recipe recipe, List<InventorySlot> slots) {
+	public void setGhostRecipe(Recipe recipe, List<InventorySlot> slots) {
     }
 
     @Override
-    public void doSetGhostRecipe(Recipe recipe, List<InventorySlot> slots) {
+    public void connect_to_1_12_x$doSetGhostRecipe(Recipe recipe, List<InventorySlot> slots) {
         setGhostRecipe(recipe, slots);
     }
 
@@ -92,7 +93,7 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
     }
 
     @Shadow
-    private void toggleVisibility() {
+	public void toggleVisibility() {
     }
 
     @Inject(
@@ -118,7 +119,7 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
     )
     private void redirectM_6180894(int x, int y, int button, CallbackInfoReturnable<Boolean> ci) {
         if (MultiConnectHelper.getProtocolVersion() <= PacketLists.PROTOCOL_1_12) {
-            this.setContainerRecipe(this.page.getLastClickedRecipe(), this.page.getLastClickedRecipeCollection());
+            this.setContainerRecipe(this.page.getLastClickedRecipe(), Objects.requireNonNull(this.page.getLastClickedRecipeCollection()));
             if (!this.isOffset() && button == 0)
             {
                 this.setVisible(false);
@@ -155,7 +156,7 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
 
                 if (!list2.isEmpty()) {
                     short short1 = this.minecraft.player.menu.getNextActionNetworkId(this.minecraft.player.inventory);
-                    this.minecraft.getNetworkHandler().sendPacket(new PlaceRecipeC2SPacket(this.menu.networkId, list2, Lists.newArrayList(), short1));
+                    Objects.requireNonNull(this.minecraft.getNetworkHandler()).sendPacket(new PlaceRecipeC2SPacket(this.menu.networkId, list2, Lists.newArrayList(), short1));
 
                     if (this.recipeBook.isFilteringCraftable()) {
                         this.minecraft.player.inventory.markDirty();
@@ -195,10 +196,9 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
 
         if (this.contents.canCraft(p_193950_1_, intlist, i1)) {
             int j1 = i1;
-            IntListIterator lvt_10_1_ = intlist.iterator();
 
-            while (lvt_10_1_.hasNext()) {
-                int k = ((Integer) lvt_10_1_.next()).intValue();
+            for (Integer integer : intlist) {
+                int k = integer;
                 int l = StackedContents.getStackFromId(k).getMaxSize();
 
                 if (l < j1) {
@@ -211,7 +211,7 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
                 List<PlaceRecipeC2SPacket.ItemMove> list3 = Lists.<PlaceRecipeC2SPacket.ItemMove>newArrayList();
                 this.placeRecipe(p_193950_1_, p_193950_2_, j1, intlist, list3);
                 short short1 = this.minecraft.player.menu.getNextActionNetworkId(this.minecraft.player.inventory);
-                this.minecraft.getNetworkHandler().sendPacket(new PlaceRecipeC2SPacket(this.menu.networkId, list2, list3, short1));
+                Objects.requireNonNull(this.minecraft.getNetworkHandler()).sendPacket(new PlaceRecipeC2SPacket(this.menu.networkId, list2, list3, short1));
                 this.minecraft.player.inventory.markDirty();
             }
         }
@@ -302,7 +302,7 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
                 }
 
                 InventorySlot slot = p_193013_2_.get(j1);
-                ItemStack itemstack = StackedContents.getStackFromId(((Integer) iterator.next()).intValue());
+                ItemStack itemstack = StackedContents.getStackFromId(iterator.next());
 
                 if (itemstack.isEmpty()) {
                     ++j1;

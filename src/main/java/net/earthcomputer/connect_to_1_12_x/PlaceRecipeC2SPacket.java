@@ -9,10 +9,10 @@ import java.util.List;
 
 public class PlaceRecipeC2SPacket implements Packet<ServerPlayPacketHandler> {
 
-	private int inventoryId;
-	private short actionId;
-	private List<PlaceRecipeC2SPacket.ItemMove> moveItemsFromGrid;
-	private List<PlaceRecipeC2SPacket.ItemMove> moveItemsToGrid;
+	private final int inventoryId;
+	private final short actionId;
+	private final List<PlaceRecipeC2SPacket.ItemMove> moveItemsFromGrid;
+	private final List<PlaceRecipeC2SPacket.ItemMove> moveItemsToGrid;
 
 	public PlaceRecipeC2SPacket(int inventoryId, List<PlaceRecipeC2SPacket.ItemMove> moveItemsFromGrid, List<PlaceRecipeC2SPacket.ItemMove> moveItemsToGrid, short actionId) {
 		this.inventoryId = inventoryId;

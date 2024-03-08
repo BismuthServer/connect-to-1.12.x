@@ -6,6 +6,6 @@ import net.minecraft.inventory.slot.InventorySlot;
 
 public interface RecipeBookGuiAccessor {
 
-	void doSetGhostRecipe(Recipe recipe, List<InventorySlot> slots);
+	void connect_to_1_12_x$doSetGhostRecipe(Recipe recipe, List<InventorySlot> slots);
 
 }
