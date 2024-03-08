@@ -14,7 +14,6 @@ import net.minecraft.network.packet.c2s.play.*;
 import net.minecraft.network.packet.s2c.play.*;
 
 public class PacketLists {
-
 	private static final Logger LOGGER = LogManager.getLogger("Connect to 1.12.x");
 
 	private static final Map<Integer, Consumer<PacketRegistry>> PROTOCOL_SWITCHERS = new LinkedHashMap<>();

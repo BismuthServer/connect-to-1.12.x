@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class PlaceRecipeC2SPacket implements Packet<ServerPlayPacketHandler> {
-
 	private final int inventoryId;
 	private final short actionId;
 	private final List<PlaceRecipeC2SPacket.ItemMove> moveItemsFromGrid;
@@ -50,7 +49,6 @@ public class PlaceRecipeC2SPacket implements Packet<ServerPlayPacketHandler> {
 	}
 
 	public static class ItemMove {
-
 		public ItemStack stack;
 		public int srcSlot;
 		public int destSlot;

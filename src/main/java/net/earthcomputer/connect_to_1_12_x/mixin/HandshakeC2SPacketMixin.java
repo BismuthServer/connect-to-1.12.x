@@ -13,8 +13,8 @@ import net.earthcomputer.connect_to_1_12_x.MultiConnectHelper;
 
 @Mixin(HandshakeC2SPacket.class)
 public class HandshakeC2SPacketMixin {
-
-	@Shadow private int version;
+	@Shadow
+	private int version;
 
 	@Inject(
 		method = "<init>(Ljava/lang/String;ILnet/minecraft/network/NetworkProtocol;)V",

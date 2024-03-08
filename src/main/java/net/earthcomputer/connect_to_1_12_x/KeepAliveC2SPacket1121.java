@@ -6,7 +6,6 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.server.network.handler.ServerPlayPacketHandler;
 
 public class KeepAliveC2SPacket1121 implements Packet<ServerPlayPacketHandler> {
-
 	private int id;
 
 	public KeepAliveC2SPacket1121() {

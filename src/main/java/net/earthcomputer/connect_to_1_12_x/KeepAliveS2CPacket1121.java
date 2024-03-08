@@ -9,7 +9,6 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.packet.Packet;
 
 public class KeepAliveS2CPacket1121 implements Packet<ClientPlayPacketHandler> {
-
 	private int id;
 
 	@Override

@@ -20,8 +20,7 @@ import net.minecraft.client.resource.language.I18n;
 @Mixin(DirectConnectScreen.class)
 public class DirectConnectScreenMixin extends Screen {
 
-    @Shadow
-    @Final
+    @Shadow @Final
     private ServerListEntry server;
 
     @Unique

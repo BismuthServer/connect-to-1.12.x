@@ -14,7 +14,6 @@ import java.util.Objects;
 
 @Mixin(DownloadingTerrainScreen.class)
 public class DownloadingTerrainScreenMixin extends Screen {
-
 	@Unique
 	private int progress;
 

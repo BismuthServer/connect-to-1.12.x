@@ -16,7 +16,6 @@ import net.minecraft.network.packet.Packet;
 
 @Mixin(NetworkProtocol.class)
 public class NetworkProtocolMixin implements PacketRegistry {
-
 	@Shadow @Final
 	private Map<PacketFlow, BiMap<Integer, Class<? extends Packet<?>>>> packets;
 

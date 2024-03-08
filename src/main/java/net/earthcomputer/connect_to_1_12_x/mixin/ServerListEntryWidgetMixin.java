@@ -13,9 +13,7 @@ import net.minecraft.client.options.ServerListEntry;
 
 @Mixin(ServerListEntryWidget.class)
 public class ServerListEntryWidgetMixin {
-
-	@Shadow
-	@Final
+	@Shadow @Final
 	private ServerListEntry entry;
 
 	@ModifyConstant(

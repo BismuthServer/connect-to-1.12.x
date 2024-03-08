@@ -54,12 +54,10 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
     @Unique
     private InventoryMenu menu;
 
-    @Shadow
-    @Final
+    @Shadow @Final
     private GhostRecipe ghostRecipe;
 
-    @Shadow
-    @Final
+    @Shadow @Final
     private RecipeBookPage page;
 
     @Shadow
