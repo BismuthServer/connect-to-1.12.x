@@ -18,10 +18,11 @@
 	"entrypoints": {
 	},
 	"mixins": [
-		"connect-to-1.12.x.mixins.json"
+    "connect_to_1_12_x.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.14.21",
-		"minecraft": "1.12.2"
+		"minecraft": "1.12.2",
+    "osl-resource-loader": "*"
 	}
 }
