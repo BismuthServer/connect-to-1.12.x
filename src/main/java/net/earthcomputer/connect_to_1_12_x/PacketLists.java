@@ -127,7 +127,7 @@ public class PacketLists {
 		registry.connect_to_1_12_x$registerPacket(PacketFlow.CLIENTBOUND, EntityAttributesS2CPacket.class);
 		registry.connect_to_1_12_x$registerPacket(PacketFlow.CLIENTBOUND, EntityStatusEffectS2CPacket.class);
 		registry.connect_to_1_12_x$registerPacket(PacketFlow.SERVERBOUND, AcceptTeleportC2SPacket.class);
-		registry.connect_to_1_12_x$registerPacket(PacketFlow.SERVERBOUND, PlaceRecipeC2SPacket.class);
+		registry.connect_to_1_12_x$registerPacket(PacketFlow.SERVERBOUND, PlaceRecipeC2SPacket112.class);
 		registry.connect_to_1_12_x$registerPacket(PacketFlow.SERVERBOUND, CommandSuggestionsC2SPacket.class);
 		registry.connect_to_1_12_x$registerPacket(PacketFlow.SERVERBOUND, ChatMessageC2SPacket.class);
 		registry.connect_to_1_12_x$registerPacket(PacketFlow.SERVERBOUND, ClientStatusC2SPacket.class);

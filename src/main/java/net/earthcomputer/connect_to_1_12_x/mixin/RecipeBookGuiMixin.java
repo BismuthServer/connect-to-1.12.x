@@ -19,9 +19,8 @@ import com.google.common.collect.Lists;
 
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
 
-import net.earthcomputer.connect_to_1_12_x.PlaceRecipeC2SPacket;
+import net.earthcomputer.connect_to_1_12_x.PlaceRecipeC2SPacket112;
 import net.earthcomputer.connect_to_1_12_x.MultiConnectHelper;
 import net.earthcomputer.connect_to_1_12_x.PacketLists;
 import net.earthcomputer.connect_to_1_12_x.RecipeBookGuiAccessor;
@@ -149,12 +148,12 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
             if (flag) {
                 this.handleRecipeClicked(recipe, this.menu.slots, this.menu.networkId, inventorycraftresult);
             } else {
-                List<PlaceRecipeC2SPacket.ItemMove> list2 = this.clearCraftingGrid(inventorycraftresult);
+                List<PlaceRecipeC2SPacket112.ItemMove> list2 = this.clearCraftingGrid(inventorycraftresult);
                 this.setGhostRecipe(recipe, this.menu.slots);
 
                 if (!list2.isEmpty()) {
                     short short1 = this.minecraft.player.menu.getNextActionNetworkId(this.minecraft.player.inventory);
-                    Objects.requireNonNull(this.minecraft.getNetworkHandler()).sendPacket(new PlaceRecipeC2SPacket(this.menu.networkId, list2, Lists.newArrayList(), short1));
+                    Objects.requireNonNull(this.minecraft.getNetworkHandler()).sendPacket(new PlaceRecipeC2SPacket112(this.menu.networkId, list2, Lists.newArrayList(), short1));
 
                     if (this.recipeBook.isFilteringCraftable()) {
                         this.minecraft.player.inventory.markDirty();
@@ -205,21 +204,21 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
             }
 
             if (this.contents.canCraft(p_193950_1_, intlist, j1)) {
-                List<PlaceRecipeC2SPacket.ItemMove> list2 = this.clearCraftingGrid(p_193950_4_);
-                List<PlaceRecipeC2SPacket.ItemMove> list3 = Lists.<PlaceRecipeC2SPacket.ItemMove>newArrayList();
+                List<PlaceRecipeC2SPacket112.ItemMove> list2 = this.clearCraftingGrid(p_193950_4_);
+                List<PlaceRecipeC2SPacket112.ItemMove> list3 = Lists.<PlaceRecipeC2SPacket112.ItemMove>newArrayList();
                 this.placeRecipe(p_193950_1_, p_193950_2_, j1, intlist, list3);
                 short short1 = this.minecraft.player.menu.getNextActionNetworkId(this.minecraft.player.inventory);
-                Objects.requireNonNull(this.minecraft.getNetworkHandler()).sendPacket(new PlaceRecipeC2SPacket(this.menu.networkId, list2, list3, short1));
+                Objects.requireNonNull(this.minecraft.getNetworkHandler()).sendPacket(new PlaceRecipeC2SPacket112(this.menu.networkId, list2, list3, short1));
                 this.minecraft.player.inventory.markDirty();
             }
         }
     }
 
     @Unique
-    private List<PlaceRecipeC2SPacket.ItemMove> clearCraftingGrid(ResultInventory p_193954_1_) {
+    private List<PlaceRecipeC2SPacket112.ItemMove> clearCraftingGrid(ResultInventory p_193954_1_) {
         this.ghostRecipe.clear();
         PlayerInventory inventoryplayer = this.minecraft.player.inventory;
-        List<PlaceRecipeC2SPacket.ItemMove> list2 = Lists.<PlaceRecipeC2SPacket.ItemMove>newArrayList();
+        List<PlaceRecipeC2SPacket112.ItemMove> list2 = Lists.<PlaceRecipeC2SPacket112.ItemMove>newArrayList();
 
         for (int i = 0; i < this.inventory.getSize(); ++i) {
             ItemStack itemstack = this.inventory.getStack(i);
@@ -243,7 +242,7 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
 
                     this.inventory.removeStack(i, 1);
                     int k = i + 1;
-                    list2.add(new PlaceRecipeC2SPacket.ItemMove(itemstack1.copy(), k, j));
+                    list2.add(new PlaceRecipeC2SPacket112.ItemMove(itemstack1.copy(), k, j));
                 }
             }
         }
@@ -279,7 +278,7 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
     }
 
     @Unique
-    private void placeRecipe(Recipe p_193013_1_, List<InventorySlot> p_193013_2_, int p_193013_3_, IntList p_193013_4_, List<PlaceRecipeC2SPacket.ItemMove> p_193013_5_) {
+    private void placeRecipe(Recipe p_193013_1_, List<InventorySlot> p_193013_2_, int p_193013_3_, IntList p_193013_4_, List<PlaceRecipeC2SPacket112.ItemMove> p_193013_5_) {
         int i = this.inventory.getWidth();
         int j = this.inventory.getHeight();
 
@@ -306,7 +305,7 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
                     ++j1;
                 } else {
                     for (int i1 = 0; i1 < p_193013_3_; ++i1) {
-                        PlaceRecipeC2SPacket.ItemMove cpacketrecipeplacement$itemmove = this.findSpot(j1, slot, itemstack);
+                        PlaceRecipeC2SPacket112.ItemMove cpacketrecipeplacement$itemmove = this.findSpot(j1, slot, itemstack);
 
                         if (cpacketrecipeplacement$itemmove != null) {
                             p_193013_5_.add(cpacketrecipeplacement$itemmove);
@@ -324,7 +323,7 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
     }
 
     @Unique
-    private PlaceRecipeC2SPacket.ItemMove findSpot(int p_193946_1_, InventorySlot p_193946_2_, ItemStack p_193946_3_) {
+    private PlaceRecipeC2SPacket112.ItemMove findSpot(int p_193946_1_, InventorySlot p_193946_2_, ItemStack p_193946_3_) {
         PlayerInventory inventoryplayer = this.minecraft.player.inventory;
         int i = inventoryplayer.indexOf(p_193946_3_);
 
@@ -351,7 +350,7 @@ public class RecipeBookGuiMixin implements RecipeBookGuiAccessor {
                     p_193946_2_.getStack().increase(1);
                 }
 
-                return new PlaceRecipeC2SPacket.ItemMove(itemstack, p_193946_1_, i);
+                return new PlaceRecipeC2SPacket112.ItemMove(itemstack, p_193946_1_, i);
             }
         }
     }

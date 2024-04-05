@@ -7,13 +7,13 @@ import net.minecraft.server.network.handler.ServerPlayPacketHandler;
 import java.io.IOException;
 import java.util.List;
 
-public class PlaceRecipeC2SPacket implements Packet<ServerPlayPacketHandler> {
+public class PlaceRecipeC2SPacket112 implements Packet<ServerPlayPacketHandler> {
 	private final int inventoryId;
 	private final short actionId;
-	private final List<PlaceRecipeC2SPacket.ItemMove> moveItemsFromGrid;
-	private final List<PlaceRecipeC2SPacket.ItemMove> moveItemsToGrid;
+	private final List<PlaceRecipeC2SPacket112.ItemMove> moveItemsFromGrid;
+	private final List<PlaceRecipeC2SPacket112.ItemMove> moveItemsToGrid;
 
-	public PlaceRecipeC2SPacket(int inventoryId, List<PlaceRecipeC2SPacket.ItemMove> moveItemsFromGrid, List<PlaceRecipeC2SPacket.ItemMove> moveItemsToGrid, short actionId) {
+	public PlaceRecipeC2SPacket112(int inventoryId, List<PlaceRecipeC2SPacket112.ItemMove> moveItemsFromGrid, List<PlaceRecipeC2SPacket112.ItemMove> moveItemsToGrid, short actionId) {
 		this.inventoryId = inventoryId;
 		this.actionId = actionId;
 		this.moveItemsFromGrid = moveItemsFromGrid;
@@ -33,10 +33,10 @@ public class PlaceRecipeC2SPacket implements Packet<ServerPlayPacketHandler> {
 		this.writeMoveItems(buf, this.moveItemsToGrid);
 	}
 
-	private void writeMoveItems(PacketByteBuf buffer, List<PlaceRecipeC2SPacket.ItemMove> p_192612_2_) {
+	private void writeMoveItems(PacketByteBuf buffer, List<PlaceRecipeC2SPacket112.ItemMove> p_192612_2_) {
 		buffer.writeShort(p_192612_2_.size());
 
-		for (PlaceRecipeC2SPacket.ItemMove cpacketrecipeplacement$itemmove : p_192612_2_) {
+		for (PlaceRecipeC2SPacket112.ItemMove cpacketrecipeplacement$itemmove : p_192612_2_) {
 			buffer.writeItemStack(cpacketrecipeplacement$itemmove.stack);
 			buffer.writeByte(cpacketrecipeplacement$itemmove.srcSlot);
 			buffer.writeByte(cpacketrecipeplacement$itemmove.destSlot);
